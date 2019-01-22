@@ -1,0 +1,7 @@
+<div class="btn-group btn-primary">
+  <button *ngFor="let attachment of attachments" class="btn btn-sm btn-info"
+          (click)="doShowAttachment(attachment.url)">
+    <clr-icon shape="image"></clr-icon>
+    {{attachment?.comment}}
+  </button>
+</div>

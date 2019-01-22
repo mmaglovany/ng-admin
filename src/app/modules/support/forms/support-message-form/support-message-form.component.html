@@ -1,0 +1,32 @@
+<form class="form" [formGroup]="form" (submit)="onSubmitForm()">
+  <section class="form-block">
+    <div class="form-group">
+      <label class="text-right" for="message">Message</label>
+      <textarea formControlName="message" name="message" id="message"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="status" class="text-right">Next Status</label>
+      <div class="select">
+        <select name="status" id="status" formControlName="status">
+          <option value="NEW">NEW</option>
+          <option value="CLOSED">CLOSED</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <clr-alert *ngIf="error" [clrAlertType]="'danger'" [clrAlertClosable]="false">
+        <div class="alert-item">
+          <div class="alert-text">
+            {{error.payload.message}}
+          </div>
+        </div>
+      </clr-alert>
+    </div>
+
+    <div class="form-group text-right">
+      <button type="submit" class="btn btn-primary" [class.disabled]="form.invalid">Send</button>
+    </div>
+  </section>
+</form>

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option swift_prefix = "";
+
+package Contacts;
+
+message Contact {
+    string pid = 1;
+    string username = 2;
+    string avatarURL = 3;
+}
+
+message ContactsListResponse {
+    repeated Contact contacts = 1;
+}

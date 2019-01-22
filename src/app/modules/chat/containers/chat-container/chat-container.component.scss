@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  height: 100%;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.chat {
+  background-color: white;
+  overflow-y: scroll;
+  height: 100%;
+  padding: 0.25rem 0.25rem 2rem 0.25rem;
+}
+
+.message {
+  border-top: 3px solid #D7D7D7;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  input {
+    width: 100%;
+  }
+}

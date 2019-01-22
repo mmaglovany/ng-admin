@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package Protocol;
+option swift_prefix = "";
+
+// APIDOC: Updated 15.05.18 17:31
+message MapError {
+    string path = 1;
+    repeated string messages = 2;
+}
+
+// APIDOC: Updated 15.05.18 17:31
+message ErrorValidation {
+    repeated MapError errors = 1;
+}
+
+// APIDOC: Updated 15.05.18 17:31
+message EmptyResponse {
+
+}
+
+message Pagination {
+    int32 allowObjects = 1;
+    int32 allowPages = 2;
+    int32 currentPage = 3;
+    bool allowNext = 4;
+    bool allowPrev = 5;
+}

@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th class="left">Pid</th>
+    <th class="left">Account</th>
+    <th class="left">Title</th>
+    <th class="left">Message</th>
+    <th class="left">Status</th>
+    <th class="left">Created</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of $tickets|async">
+    <td class="left">
+      <a [routerLink]="['/support','ticket',ticket.pid]">{{ticket.pid}}</a>
+    </td>
+    <td class="left">
+      <lq-account-title [account]="ticket.account"></lq-account-title>
+    </td>
+    <td class="left">{{ticket.title}}</td>
+    <td class="left">{{ticket.message}}</td>
+    <td class="left">{{ticket.status}}</td>
+    <td class="left">{{ticket.created_at|date}}</td>
+  </tr>
+  </tbody>
+</table>

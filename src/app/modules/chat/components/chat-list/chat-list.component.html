@@ -1,0 +1,8 @@
+<div class="clr-col-12">
+  <lq-chat-list-entry
+    *ngFor="let chat of chats$|async"
+    [chat]="chat"
+    [filterUserPid]="userPid$|async"
+    (onClick)="goToChat($event)"
+  ></lq-chat-list-entry>
+</div>

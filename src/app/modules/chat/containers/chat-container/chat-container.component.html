@@ -1,0 +1,23 @@
+<div #chatBlock class="chat" (scroll)="onScroll($event)">
+  <lq-chat-message
+    *ngFor="let message of chat.messages | orderBy:[['createdAt'],'desc'];"
+    [message]="message"
+    [ownerPid]="ownerPid"
+    [participant]="getParticipant(message)"
+    (onUnread)="onUnread($event)"
+  ></lq-chat-message>
+</div>
+
+<div class="message">
+  <form class="clr-row" [formGroup]="messageForm" (ngSubmit)="doSend()">
+    <div class="clr-col pl-1">
+      <input type="text"
+             autocomplete="off"
+             class="form-control" name="message" formControlName="message"
+             placeholder="Write a message....">
+    </div>
+    <div class="clr-col-auto">
+      <button class="btn btn-sm btn-outline" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

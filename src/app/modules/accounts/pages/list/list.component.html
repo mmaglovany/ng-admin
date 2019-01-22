@@ -1,0 +1,30 @@
+<div *ngIf="$accounts|async; let data">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="left">id</th>
+      <th class="left">pid</th>
+      <th class="left">username</th>
+      <th class="left">Person verification</th>
+      <th class="left">Address verification</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let account of data.accounts">
+      <td class="left">{{account.id}}</td>
+      <td class="left">{{account.pid}}</td>
+      <td class="left">
+        <lq-account-title [account]="account"></lq-account-title>
+      </td>
+      <td class="left">
+        <lq-verify-status [type]="'PERSON'" [verifyData]="account?.Verify"></lq-verify-status>
+      </td>
+      <td class="left">
+        <lq-verify-status [type]="'ADDRESS'" [verifyData]="account?.Verify"></lq-verify-status>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <lq-pagination [pagination]="data.pagination"></lq-pagination>
+</div>

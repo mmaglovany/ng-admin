@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package Account;
+option swift_prefix = "";
+
+// APIDOC: Updated 15.05.18 16:50
+// APIDOC: Checked 05.06.18 19:15
+message Directory {
+    string code = 1;
+    string title = 2;
+}
+
+// APIDOC: Updated 05.06.18 19:32
+// APIDOC: Checked 05.06.18 19:32
+message Verification {
+    string pid = 1;
+    string imageUrl = 2;
+    string type = 3;
+    string status = 4;
+    string message = 5;
+    string verifyAt = 6;
+    string createdAt = 7;
+}
+
+// APIDOC: Updated 05.06.18 19:34
+// APIDOC: Checked 05.06.18 19:34
+message User {
+    string pid = 1;
+    string username = 2;
+    string avatar = 3;
+    Directory country = 5;
+}
+
+// APIDOC: Updated 05.06.18 19:52
+// APIDOC: Checked 05.06.18 19:52
+message Profile {
+    User user = 1;
+    string email = 4;
+    Directory language = 2;
+    repeated Verification verifications = 6;
+}
+
+// APIDOC: Updated 15.05.18 17:19
+message UpdateAvatarResponse {
+    string url = 10;
+}
+
+// APIDOC: Updated 15.05.18 17:19
+message ProfileResponse {
+    Profile profile = 1;
+}
+
+message UploadVerificationResponse {
+    Verification verification = 1;
+}
+
+message UpdateProfileRequest {
+    string username = 10;
+    string email = 20;
+    Directory language = 30;
+    Directory country = 40;
+}

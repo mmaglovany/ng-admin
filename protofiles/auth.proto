@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "account.proto";
+
+package Auth;
+option swift_prefix = "";
+
+// 1. Before registration
+
+// OK     Protocol.EmptyResponse    200
+// ERROR  Protocol.ErrorValidation  400
+message ValidationRQ {
+    string uid = 10;
+    string username = 20;
+    string email = 30; // Optional field
+}
+
+// 2. Registration
+
+// OK     Auth.LoginSuccessRS         201
+// ERROR  Protocol.ErrorValidation    400
+message RegistrationRQ {
+    string uid = 10;
+    string username = 20;
+    string password = 30;
+    string openKey = 40;
+    string email = 50; //    Optional field
+    string country = 60; //  Optional field
+    string language = 70; // Optional field
+}
+
+// LOGIN
+// APIDOC: Updated 15.05.18 17:35
+message LoginRQ {
+    string username = 10;
+    string password = 20;
+}
+
+// APIDOC: Updated 15.05.18 17:35
+message LoginSuccessRS {
+    Account.Profile profile = 2;
+    string token = 3;
+}

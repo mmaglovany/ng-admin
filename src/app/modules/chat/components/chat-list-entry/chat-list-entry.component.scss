@@ -1,0 +1,19 @@
+.card {
+  margin: 0;
+  border: none;
+
+  &:hover {
+    background-color: #cccccc;
+    cursor: pointer;
+  }
+
+  .card-block {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+}
+
+.lastAuthor {
+  color: #007cbb;
+}

@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package Chat;
+option swift_prefix = "";
+
+message ConversationParticipant {
+    string pid = 1;
+    string username = 2;
+    string avatarURL = 3;
+}
+
+message ConversationMessage {
+    string pid = 1;
+    string message = 2;
+    string createdAt = 3;
+    bool isRead = 4;
+    string senderPid = 5;
+    string conversationPid = 6;
+}
+
+message Conversation {
+    string pid = 1;
+    ConversationMessage lastMessage = 2;
+    repeated ConversationParticipant participants = 3;
+    int32 unreadMessages = 4; //incoming unread messages count
+}
+
+// # INDICATORS #
+
+message ConversationIndicator {
+    string conversationPid = 1;
+    int32 count = 2;
+}
+
+// FireEvent: chat/indicator
+message IndicatorMessage {
+    int32 count = 1;
+    repeated ConversationIndicator conversations = 2;
+}
+
+// # ReadAt message #
+
+// Event: chat/mark         Callback: Protocol.EmptyResponse
+message ConversationMarkMessage {
+    string conversationPid = 1;
+    repeated string messagesPids = 2;
+}
+
+message MarkMessages {
+    repeated ConversationMarkMessage markers = 1;
+}
+
+// Event: chat/message/send
+message SendMessageRequest {
+    string localPid = 1;
+    string userPid = 2;
+    string conversationPid = 3;
+    string message = 4;
+}
+
+message SendMessageCallback {
+    string localPid = 1;
+    string messagePid = 2;
+    string conversationPid = 3;
+}
+
+// Event: chat/list
+message ConversationListRequest {
+    string fromDate = 1;
+    repeated string conversationPid = 2;
+}
+
+message ConversationListResponse {
+    repeated Conversation conversations = 1;
+}
+
+// Event: chat/messages/list
+message ConversationHistoryRequest {
+    string fromDate = 1;
+    string userPid = 2;
+    string conversationPid = 3;
+}
+
+message ConversationHistoryCallback {
+    string conversationPid = 1;
+    string userPid = 2;
+    repeated ConversationMessage messages = 3;
+    repeated ConversationParticipant participants = 4;
+    ConversationMessage lastMessage = 5;
+}

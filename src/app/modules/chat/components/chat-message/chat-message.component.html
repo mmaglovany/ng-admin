@@ -1,0 +1,5 @@
+<div class="message" [ngClass]="{own: message.senderPid===ownerPid}">
+  <img class="avatar" [src]="participant.avatarURL"/>
+  {{message.message}}
+  <small>{{message.createdAt|date:"MMM d, h:mm a"}}</small>
+</div>

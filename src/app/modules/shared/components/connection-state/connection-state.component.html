@@ -1,0 +1,5 @@
+<div>
+  Socket:
+  <span *ngIf="(state$|async)" class="badge badge-success"></span>
+  <span *ngIf="!(state$|async)" class="badge badge-warning"></span>
+</div>

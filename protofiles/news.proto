@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "protocol.proto";
+
+package News;
+option swift_prefix = "";
+
+// APIDOC: Updated 28.05.18 18:22
+message ShortNews {
+    string pid = 1;
+    string title = 2;
+    string imageUrl = 3;
+    string publishedAt = 4;
+}
+
+// APIDOC: Updated 28.05.18 18:22
+message DetailedNews {
+    string pid = 1;
+    string title = 2;
+    string imageUrl = 3;
+    string publishedAt = 4;
+    string content = 5;
+}
+
+// APIDOC: Updated 28.05.18 18:23
+message NewsListResponse {
+    repeated ShortNews news = 1;
+    Protocol.Pagination pagination = 2;
+}
+
+// APIDOC: Updated 28.05.18 18:23
+message NewsDetailsResponse {
+    DetailedNews news = 1;
+}

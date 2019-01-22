@@ -1,0 +1,10 @@
+<section class="sidenav-content">
+  <div class="clr-row">
+    <lq-chat-list class="clr-col-12"></lq-chat-list>
+  </div>
+
+  <a *ngFor="let account of $accounts|async" routerLink="/chat/user/{{account.pid}}" routerLinkActive="active"
+     class="nav-link">
+    {{account.username}}
+  </a>
+</section>

@@ -1,0 +1,15 @@
+<div *ngIf="account" class="row flex-items-xs-left">
+  <div class="avatar-container">
+    <img [src]="account.avatar">
+  </div>
+  <div class="details-container">
+    <h2 class="username">{{account.username}}</h2>
+    <div>
+      <strong>Private id:</strong> {{account.id}}
+      <strong>Public pid:</strong> {{account.pid}}
+    </div>
+    <div>
+      <strong>Created:</strong> {{account.created_at|date}}
+    </div>
+  </div>
+</div>

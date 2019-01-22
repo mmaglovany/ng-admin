@@ -1,0 +1,20 @@
+<div class="login-wrapper row flex-items-xs-center">
+  <form [formGroup]="authForm" class="login" (ngSubmit)="doLogin()">
+    <label class="title">
+      <h3 class="welcome">Welcome to</h3>
+      LIQUID8 P2P
+      <h5 class="hint">MULTI-FUNCTIONAL PLATFORM</h5>
+      <h6>Bridging the gap between traditional asset class and the emerging asset class via blockchain technology</h6>
+    </label>
+    <div class="login-group">
+      <input class="username" type="text" id="username" name="username" placeholder="Username"
+             formControlName="username">
+      <input class="password" type="password" id="login_password" name="password" placeholder="Password"
+             formControlName="password">
+      <div *ngIf="loginFailed$|async; let data" class="error active">
+        {{data.statusText}}
+      </div>
+      <button type="submit" class="btn btn-primary" [class.disabled]="authForm.invalid">NEXT</button>
+    </div>
+  </form>
+</div>

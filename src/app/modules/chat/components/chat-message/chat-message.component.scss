@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.message {
+  display: block;
+  background-color: white;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  font-size: 14px;
+
+  &.own {
+    text-align: left;
+    color: lightseagreen;
+  }
+
+  small {
+    color: #aaaaaa;
+  }
+
+  .avatar {
+    width: 20px;
+  }
+}

@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+import "protocol.proto";
+option swift_prefix = "";
+
+package Tickets;
+
+enum TicketStatus {
+    NEW = 0;
+    CLOSED = 1;
+}
+
+message AttachmentRequest {
+    string comment = 1;
+    bytes content = 2;
+}
+
+message AttachmentResponse {
+    string comment = 1;
+    string imageUrl = 2;
+}
+
+message ModeratorStruct {
+    string username = 1;
+}
+
+message Ticket {
+    string pid = 1;
+    string title = 2;
+    TicketStatus status = 4;
+    string createdAt = 5;
+    repeated TicketMessage messages = 6;
+}
+
+message TicketMessage {
+    string pid = 1;
+    string message = 2;
+    string createdAt = 3;
+    repeated AttachmentResponse attachments = 4;
+    ModeratorStruct moderator = 5;
+}
+
+// Get list of tickets
+message TicketsResponse {
+    repeated Ticket tickets = 1;
+    Protocol.Pagination pagination = 2;
+}
+
+// Create new ticket
+message CreateTicketRequest {
+    string title = 1;
+    string message = 2;
+    repeated AttachmentRequest attachments = 3;
+}
+message CreateTicketResponse {
+    Ticket ticket = 1;
+}
+
+// Add message to ticket
+message CreateTicketMessageRequest {
+    string ticketPid = 1;
+    string localPid = 2;
+    string message = 3;
+    repeated AttachmentRequest attachments = 4;
+}
+message CreateTicketMessageResponse {
+    string localPid = 1;
+    TicketMessage message = 2;
+}
+
+// Get details by ticket
+message TicketDetailsResponse {
+    Ticket ticket = 1;
+    Protocol.Pagination pagination = 2;
+}

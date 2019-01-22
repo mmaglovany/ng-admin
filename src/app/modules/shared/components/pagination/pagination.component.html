@@ -1,0 +1,8 @@
+<div class="pagination">
+  <a *ngIf="pagination.allowPrev" class="btn btn-sm btn-link"
+     [routerLink]="['/accounts']"
+     [queryParams]="{page:pagination.currentPage-1}">Prev</a>
+  <a *ngIf="pagination.allowNext" class="btn btn-sm btn-link"
+     [routerLink]="['/accounts']"
+     [queryParams]="{page:pagination.currentPage+1}">Next</a>
+</div>
